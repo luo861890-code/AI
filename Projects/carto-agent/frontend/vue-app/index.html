@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/maplibre-gl@4.5.0/dist/maplibre-gl.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <title>CartoAgent - 智能地图制图</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div id="error-display" style="display: none; padding: 20px; background: #fee2e2; color: #991b1b; font-family: sans-serif; white-space: pre-wrap;"></div>
+    <script>
+      window.addEventListener('error', function(e) {
+        const errorDiv = document.getElementById('error-display');
+        if (errorDiv) {
+          errorDiv.style.display = 'block';
+          errorDiv.innerHTML = '<h3>JavaScript Error</h3><p><strong>Message:</strong> ' + e.message + '</p><p><strong>File:</strong> ' + e.filename + '</p><p><strong>Line:</strong> ' + e.lineno + ':' + e.colno + '</p>' + (e.error && e.error.stack ? '<p><strong>Stack:</strong><br>' + e.error.stack.replace(/\n/g, '<br>') + '</p>' : '');
+        }
+      });
+      window.addEventListener('unhandledrejection', function(e) {
+        const errorDiv = document.getElementById('error-display');
+        if (errorDiv) {
+          errorDiv.style.display = 'block';
+          errorDiv.innerHTML = '<h3>Unhandled Promise Rejection</h3><p>' + e.reason + '</p>';
+        }
+      });
+    </script>
+    <!-- ===== Leaflet 与经典 JS 做图模块（MapPanel）依赖 ===== -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="/legacy/leaflet-editable.js"></script>
+    <script src="https://unpkg.com/proj4@2.9.0/dist/proj4.js"></script>
+    <script src="https://unpkg.com/proj4leaflet@1.0.2/src/proj4leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+    <script src="/legacy/config.js"></script>
+    <script src="/legacy/utils.js"></script>
+    <script src="/legacy/api.js"></script>
+    <script src="/legacy/map.js"></script>
+    <script src="/legacy/map-lod.js"></script>
+    <script src="/legacy/map-edit.js"></script>
+    <script>
+      // 将经典 JS 做图模块暴露到 window，供 Vue 组件调用
+      window.MapPanel = MapPanel;
+      window.Utils = Utils;
+      window.API = API;
+      window.CONFIG = CONFIG;
+    </script>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

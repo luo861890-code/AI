@@ -1,0 +1,35 @@
+# 注意：pydantic 2.x / langchain 0.3 需要 Python >= 3.8，建议使用 3.10+。
+# Web框架
+fastapi==0.115.0
+uvicorn[standard]==0.30.0
+python-multipart==0.0.9
+
+# Pydantic
+pydantic==2.9.0
+pydantic-settings==2.5.0
+
+# LLM相关
+langchain>=0.3.7,<0.4
+langchain-core>=0.3.7,<0.4
+langchain-community>=0.3.7,<0.4
+langchain-ollama==0.2.0
+langchain-openai==0.2.0
+langchain-neo4j==0.2.0
+openai==1.50.0
+httpx==0.27.0
+
+# 知识图谱
+neo4j>=5.25.0,<6.0.0
+
+# 地图数据
+requests==2.32.0
+shapely==2.0.6
+
+# 工具
+python-dotenv==1.0.1
+numpy==1.26.4
+# requests 2.32.0 兼容性检查要求 chardet < 6.0.0（7.x 会产生 RequestsDependencyWarning）
+chardet==5.2.0
+
+# 导出
+reportlab==4.2.0

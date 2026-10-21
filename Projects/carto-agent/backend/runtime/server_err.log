@@ -1,0 +1,14 @@
+2026-08-14 18:21:19,142 [INFO] carto-agent:   前端页面: http://0.0.0.0:8080/app
+2026-08-14 18:21:19,143 [INFO] carto-agent:   前端页面: http://0.0.0.0:8080/src/index.html
+INFO:     Started server process [33244]
+INFO:     Waiting for application startup.
+2026-08-14 18:21:19,143 [INFO] carto-agent: ============================================================
+2026-08-14 18:21:19,143 [INFO] carto-agent: 地图制图智能体API 服务已启动
+2026-08-14 18:21:19,143 [INFO] carto-agent:   监听地址: http://0.0.0.0:8080
+2026-08-14 18:21:19,143 [INFO] carto-agent:   API文档:  http://0.0.0.0:8080/docs
+2026-08-14 18:21:19,143 [INFO] carto-agent:   当前LLM:  deepseek
+2026-08-14 18:21:19,143 [INFO] carto-agent:   调试模式:  开启
+2026-08-14 18:21:19,143 [INFO] carto-agent: ============================================================
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+2026-08-14 18:23:45,674 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"

@@ -1,0 +1,62 @@
+[LLMService] 初始化完成，当前provider: deepseek, 模型: deepseek-chat
+INFO:     127.0.0.1:54505 - "GET /api/settings/llm/providers HTTP/1.1" 200 OK
+[SessionService] 初始化完成，已加载50个会话
+INFO:     127.0.0.1:54505 - "GET /api/chat/sessions HTTP/1.1" 200 OK
+[KGService] Neo4j连接失败: Couldn't connect to localhost:7687 (resolved to ('[::1]:7687', '127.0.0.1:7687')):
+Failed to establish connection to ResolvedIPv6Address(('::1', 7687, 0, 0)) (reason [WinError 10061] 由于目标计算机积极拒绝，无法连接。)
+Failed to establish connection to ResolvedIPv4Address(('127.0.0.1', 7687)) (reason [WinError 10061] 由于目标计算机积极拒绝，无法连接。)，降级为内存规则模式
+[KGService] 从init_data.json加载: 237个节点, 803条关系
+INFO:     127.0.0.1:53706 - "GET /api/kg/graph?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61255 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56935 - "OPTIONS /api/settings/llm/providers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56935 - "OPTIONS /api/kg/graph?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56935 - "GET /api/settings/llm/providers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62025 - "GET /api/kg/graph?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62423 - "GET /api/settings/llm/providers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62423 - "OPTIONS /api/chat/sessions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62423 - "GET /api/chat/sessions HTTP/1.1" 200 OK
+[SessionService] 创建会话: session_12cd7813a65b (新会话)
+INFO:     127.0.0.1:62423 - "POST /api/chat/sessions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62423 - "OPTIONS /api/chat/sessions/session_12cd7813a65b/stream HTTP/1.1" 200 OK
+[OSMService] 磁盘缓存加载: 3 条
+[OSMService] 初始化完成，可用服务器: 4个
+[DataSourceRegistry] 已注册数据源: osm (OSMSourceAdapter)
+[DataSourceRegistry] 已注册数据源: amap (AmapPOIAdapter)
+[DataSourceRegistry] 已注册数据源: tianditu (TiandituTileAdapter)
+[MapService] 已从主文件 ../data\maps.json 恢复 10 张地图
+[MapService] 初始化完成，已注册数据源: ['osm', 'amap', 'tianditu']
+[RAGService] 从 ../data\kg\cartography_kb.json 加载知识库成功
+[RAGService] 初始化完成，知识库共35条
+[GraphRAGService] 初始化完成
+[GeoTokenService] 初始化完成 (grid=64, embed_dim=64)
+[ToolRegistry] 初始化完成
+[ToolRegistry] 注册工具: osm_fetch (category=data)
+[ToolRegistry] 注册工具: style_config (category=rendering)
+[ToolRegistry] 注册工具: map_render (category=rendering)
+[ToolRegistry] 注册工具: quality_check (category=analysis)
+[ExportService] 初始化完成
+[ToolRegistry] 注册工具: map_export (category=export)
+[AgentService] ToolRegistry 初始化完成: 已注册5个工具: ['osm_fetch', 'style_config', 'map_render', 'quality_check', 'map_export']
+[AgentService] 初始化完成
+INFO:     127.0.0.1:62423 - "POST /api/chat/sessions/session_12cd7813a65b/stream HTTP/1.1" 200 OK
+[SessionService] 添加消息到会话 session_12cd7813a65b: role=user, 内容长度=9
+[AgentService] 处理请求: 武汉市行政规划地图...
+[AgentService] 快速路径：识别为地图生成请求，跳过RAG/GraphRAG
+[KGService] 内存模式查询制图决策: map_type=administrative, audience=public, decisions=8, confidence=high
+[KGPriorPlanner] KG决策获取成功 (confidence=high)
+[GeoService] 使用本地区划数据: hubei_cities.geojson
+[LocalGeo] 使用本地水系数据: 0条大江, 234条主河, 1155条支流, 河流水面 22, 湖泊档位 湖泊（概览级）:18/湖泊（市域级）:109/湖泊（城区级）:214/湖泊（详图级）:291, 概览点符号 52, 78个注记
+[LocalGeo] 使用本地路网数据: 27650条道路(已裁剪到市域内), 11个等级图层
+[LocalGeo] 居民地街区: 合并后 0大/10中/115小 (源 9050 块)
+[MapService] 正在获取武汉市的OSM数据，类型: ['boundary~administrative', 'place_city']
+[OSMService] 连通性探测: 可达
+[OSMService] 命中磁盘缓存: 武汉市 1类要素
+[AmapService] 未配置 AMAP_API_KEY，跳过高德数据补充（在 backend/.env 填写后自动启用）
+[GeoService] 使用本地区划数据: wuhan_districts.geojson
+[GeoService] 获取武汉市区划面: 13个区县
+[GeoService] 使用本地区划数据: hubei_cities.geojson
+[GeoService] 使用本地区划数据: hubei_cities.geojson
+[MapService] 地图生成成功: 武汉市行政区划图 (ID: map_e6b69505b38e)，共36个图层
+[CartographyValidator] 校验完成: score=94, issues=4, passed=4, failed=0
+[SessionService] 添加消息到会话 session_12cd7813a65b: role=assistant, 内容长度=905
+[MapService] 旧地图已归档: map_ea003344c420
